@@ -1,5 +1,7 @@
 library(tm)
 library(wordcloud)
+library(SnowballC)
+library(RColorBrewer)
 
 tweets <- readLines("Desktop/TIO/Proyecto Final/nube_palabras/source/tweets.txt",encoding="UTF-8")
 tweets <- iconv(tweets,to="ASCII//TRANSLIT")
@@ -58,4 +60,7 @@ wf <- sort(rowSums(m),decreasing = TRUE)
 dm <- data.frame(word=names(wf),freq=wf)
 
 #Generación de la nube de etiquetas
-wordcloud(dm$word,dm$freq,max.words = 100,random.order=FALSE,colors=brewer.pal(8,"Dark2"))
+png("Desktop/TIO/Proyecto Final/nube_palabras/nubes/nubefinal.jpeg", width=1280, height=800)
+wordcloud(words = dm$word,freq = dm$freq,min.freq=20,random.order=FALSE,rot.per=0.35,colors=brewer.pal(8,"Dark2"))
+dev.off()
+
