@@ -57,8 +57,5 @@ wf <- sort(rowSums(m),decreasing = TRUE)
 #crea un data.frame con las palabras y sus frecuencias
 dm <- data.frame(word=names(wf),freq=wf)
 
-#Frecuencia mínima igual a 20
-findFreqTerms(tdm,lowfreq=50)
-
 #Generación de la nube de etiquetas
-wordcloud(dm$word,dm$freq,random.order=FALSE,colors=brewer.pal(8,"Set1"))
+wordcloud(dm$word,dm$freq,max.words = 100,random.order=FALSE,colors=brewer.pal(8,"Dark2"))
